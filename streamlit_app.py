@@ -1,4 +1,3 @@
-
 import streamlit as st
 from PyPDF2 import PdfReader
 from langchain_community.document_loaders import PyPDFLoader
@@ -30,8 +29,8 @@ if uploaded_file is not None:
 
   llm = ChatGroq(groq_api_key = api_key, model_name = 'llama3-70b-8192', temperature = 0.2, top_p = 0.2)
 
-  template = '''Write a very concise, well-explained, point-wise, short summary of the following text. I will tip you $1000, if you provide good and user-acceptable response.
-  HR: '{text}. Also, mention what the document uploaded is aimed at doing, as in its purpose.'
+  template = '''Write a very concise, well-explained, point-wise, short summary of the following text. Provide good and user-acceptable response.
+  HR: '{text}. Create section-wise summary. Also, mention what the document uploaded is aimed at doing, as in its purpose.'
   '''
 
   prompt = PromptTemplate(
