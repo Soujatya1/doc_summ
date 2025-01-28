@@ -28,7 +28,7 @@ if uploaded_file is not None:
 
   api_key = "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"
 
-  llm = ChatGroq(groq_api_key = api_key, model_name = 'llama-3.1-70b-versatile', temperature = 0.2, top_p = 0.2)
+  llm = ChatGroq(groq_api_key = api_key, model_name = 'llama-3.3-70b-versatile', temperature = 0.2, top_p = 0.2)
 
   template = '''Write a very concise, well-explained, point-wise, short summary of the following text. I will tip you $1000, if you provide good and user-acceptable response.
   HR: '{text}. Also, mention what the document uploaded is aimed at doing, as in its purpose.'
