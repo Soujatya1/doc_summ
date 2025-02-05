@@ -13,19 +13,19 @@ from fpdf import FPDF
 
 class PDF(FPDF):
     def header(self):
-        self.set_font("Arial", "B", 16)
+        self.set_font("Arial", "B", 15)
         self.cell(0, 10, "Document Summary", ln=True, align="C")
         self.ln(10)
 
     def chapter_title(self, title):
         """Format section titles in bold"""
-        self.set_font("Arial", "B", 12)
+        self.set_font("Arial", "B", 10)
         self.cell(0, 8, title, ln=True, align="L")
         self.ln(4)
 
     def chapter_body(self, body):
         """Format body text properly"""
-        self.set_font("Arial", "", 11)
+        self.set_font("Arial", "", 9)
         self.multi_cell(0, 6, body)
         self.ln(4)
 
