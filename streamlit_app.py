@@ -33,7 +33,7 @@ if uploaded_file is not None:
   template = '''Write a very concise, well-explained, point-wise, short summary of the following text. Provide good and user-acceptable response.
   '{text}
   Create section-wise summary. Also, mention what the document uploaded is aimed at doing, as in its purpose.
-  If applicable, display the involved parties name as well just after the purpose. Also, at the end mention the key findings in points. Post this, the main summary should apper as Key Findings'
+  If applicable, display the involved parties name as well just after the purpose. Also, at the end mention the key findings in points. Post this, the main summary should apper as Key Events, after which the Key Findings need to be displayed'
   '''
 
   prompt = PromptTemplate(
