@@ -54,7 +54,7 @@ if uploaded_file is not None:
     # API Key (Replace with your actual API key)
     api_key = "your_groq_api_key"
 
-    llm = ChatGroq(groq_api_key=api_key, model_name='llama3-70b-8192', temperature=0.2, top_p=0.2)
+    llm = ChatGroq(groq_api_key='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', model_name='llama3-70b-8192', temperature=0.2, top_p=0.2)
 
     template = '''Write a very concise, well-explained, point-wise, short summary of the following text. Provide good and user-acceptable response.
     '{text}
