@@ -32,7 +32,7 @@ if uploaded_file is not None:
 
   template = '''Write a very concise, well-explained, point-wise, short summary of the following text. Provide good and user-acceptable response.
   '{text}
-  Create section-wise summary. Also, mention what the document uploaded is aimed at doing, as in its purpose.
+  Create section-wise summary.
   The format should be:
   Overview
   Involved Parties
