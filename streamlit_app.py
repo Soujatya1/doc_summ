@@ -62,25 +62,37 @@ if uploaded_file is not None:
             self.ln(10)
 
         def chapter_title(self, title):
+            """Format section titles in bold"""
             self.set_font("Arial", "B", 12)
-            self.cell(0, 10, title, ln=True, align="L")
-            self.ln(5)
+            self.cell(0, 8, title, ln=True, align="L")
+            self.ln(4)
 
         def chapter_body(self, body):
+            """Format body text properly"""
             self.set_font("Arial", "", 11)
-            self.multi_cell(0, 8, body)
-            self.ln(5)
+            self.multi_cell(0, 6, body)
+            self.ln(4)
 
+    # Create PDF instance
     pdf = PDF()
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
 
+    # Extract section-wise content
     sections = ["Overview", "Involved Parties", "Key Events", "Key Findings"]
-    for section in sections:
-        if section in output:
-            pdf.chapter_title(section)
-            section_text = output.split(section, 1)[1].split("\n", 1)[1].strip()
-            pdf.chapter_body(section_text)
+    formatted_summary = {}
+
+    # Extract each section text properly
+    for i in range(len(sections)):
+        start = output.find(sections[i])
+        end = output.find(sections[i + 1]) if i + 1 < len(sections) else len(output)
+        if start != -1:
+            formatted_summary[sections[i]] = output[start + len(sections[i]):end].strip()
+
+    # Add content to PDF in proper format
+    for section, content in formatted_summary.items():
+        pdf.chapter_title(section)  # Bold header
+        pdf.chapter_body(content)   # Body text
 
     # Save the PDF
     pdf_output_path = "summary_output.pdf"
