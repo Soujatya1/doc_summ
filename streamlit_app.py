@@ -11,6 +11,34 @@ from typing_extensions import Concatenate
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from fpdf import FPDF
 
+class PDF(FPDF):
+    def header(self):
+        self.set_font("Arial", "B", 16)
+        self.cell(0, 10, "Document Summary", ln=True, align="C")
+        self.ln(10)
+
+    def chapter_title(self, title):
+        """Format section titles in bold"""
+        self.set_font("Arial", "B", 12)
+        self.cell(0, 8, title, ln=True, align="L")
+        self.ln(4)
+
+    def chapter_body(self, body):
+        """Format body text properly"""
+        self.set_font("Arial", "", 11)
+        self.multi_cell(0, 6, body)
+        self.ln(4)
+
+    def add_bullet_points(self, text):
+        """Formats bullet points properly"""
+        self.set_font("Arial", "", 11)
+        lines = text.split("\n")
+        for line in lines:
+            if line.strip():  # Ignore empty lines
+                self.cell(5)  # Indentation for bullet points
+                self.cell(0, 6, f"• {line}", ln=True)
+        self.ln(4)
+
 #Streamlit interface
 st.title("Document Summary Generator")
 uploaded_file = st.file_uploader("Upload a PDF file", type = "pdf")
