@@ -8,6 +8,7 @@ from langchain import PromptTemplate
 from langchain.chains.summarize import load_summarize_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from typing_extensions import Concatenate
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 #Streamlit interface
 st.title("Document Summary Generator")
@@ -24,6 +25,11 @@ if uploaded_file is not None:
           text += content
 
   docs = [Document(page_content = text)]
+
+  text_splitter = RecursiveCharacterTextSplitter(chunk_size=500,
+        chunk_overlap=50,
+        add_start_index=True
+    )
 
   api_key = "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"
 
