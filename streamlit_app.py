@@ -55,25 +55,6 @@ if uploaded_file is not None:
     st.write(output)
 
     # Generate a PDF with formatted text
-    class PDF(FPDF):
-        def header(self):
-            self.set_font("Arial", "B", 16)
-            self.cell(0, 10, "Document Summary", ln=True, align="C")
-            self.ln(10)
-
-        def chapter_title(self, title):
-            """Format section titles in bold"""
-            self.set_font("Arial", "B", 12)
-            self.cell(0, 8, title, ln=True, align="L")
-            self.ln(4)
-
-        def chapter_body(self, body):
-            """Format body text properly"""
-            self.set_font("Arial", "", 11)
-            self.multi_cell(0, 6, body)
-            self.ln(4)
-
-    # Create PDF instance
     pdf = PDF()
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
@@ -92,7 +73,10 @@ if uploaded_file is not None:
     # Add content to PDF in proper format
     for section, content in formatted_summary.items():
         pdf.chapter_title(section)  # Bold header
-        pdf.chapter_body(content)   # Body text
+        if "•" in content:  
+            pdf.add_bullet_points(content)  # Format bullet points correctly
+        else:
+            pdf.chapter_body(content)  # Normal text formatting
 
     # Save the PDF
     pdf_output_path = "summary_output.pdf"
