@@ -39,7 +39,7 @@ if uploaded_file is not None:
   Key Events
   Key Findings
   The summary should be formatted correctly as per this
-  The Key events section needs to be more elaborate and each event should have a heading to it'
+  The Key events section needs to be more elaborate and each event should have a heading to it also in a pointer manner'
   '''
 
   prompt = PromptTemplate(
