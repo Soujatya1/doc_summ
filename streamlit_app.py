@@ -26,11 +26,6 @@ if uploaded_file is not None:
 
   docs = [Document(page_content = text)]
 
-  text_splitter = RecursiveCharacterTextSplitter(chunk_size=500,
-        chunk_overlap=50,
-        add_start_index=True
-    )
-
   api_key = "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"
 
   llm = ChatGroq(groq_api_key = api_key, model_name = 'llama3-70b-8192', temperature = 0.2, top_p = 0.2)
@@ -38,7 +33,7 @@ if uploaded_file is not None:
   template = '''Write a very concise, well-explained, point-wise, short summary of the following text. Provide good and user-acceptable response.
   '{text}
   Create section-wise summary. Also, mention what the document uploaded is aimed at doing, as in its purpose.
-  If applicable, display the involved parties name as well just after the purpose. Also, at the end mention the key findings in points'
+  If applicable, display the involved parties name as well just after the purpose. Also, at the end mention the key findings in points. Post this, the main summary should apper as Key Findings'
   '''
 
   prompt = PromptTemplate(
