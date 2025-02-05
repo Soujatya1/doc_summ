@@ -38,7 +38,8 @@ if uploaded_file is not None:
   Involved Parties
   Key Events
   Key Findings
-  The summary should be formatted correctly as per this'
+  The summary should be formatted correctly as per this
+  The Key events section needs to be more elaborate'
   '''
 
   prompt = PromptTemplate(
