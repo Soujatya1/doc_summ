@@ -30,7 +30,7 @@ if uploaded_file is not None:
     Create section-wise summary.
     The format should be:
     Overview
-    Involved Parties
+    Involved Parties, if applicable
     Key Events
     Key Findings
     The summary should be formatted correctly as per this
